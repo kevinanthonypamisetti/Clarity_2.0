@@ -1,5 +1,5 @@
 // js/db.js — frontend DB adapter to call the Clarity backend
-const API_BASE = window.CLARITY_API_BASE || '';
+const API_BASE = (window.CLARITY_API_BASE || '').replace(/\/$/, '');
 
 export async function saveMemory({ userId, text, type = 'thought', category = null }) {
   const resp = await fetch(`${API_BASE}/api/memories`, {

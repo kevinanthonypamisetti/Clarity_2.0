@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarity 2.1 | Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div class="max-w-6xl mx-auto p-6 md:p-10">
+    <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Clarity workspace</p>
+        <h1 class="text-3xl font-semibold">Chat</h1>
+        <p class="text-slate-600 mt-2">Use the assistant to explore context, summarize progress, and test the local chat flow.</p>
+      </div>
+      <nav class="flex flex-wrap gap-2 text-sm">
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="dashboard.html">Dashboard</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="thoughts.html">Thoughts</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="tasks.html">Tasks</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="projects.html">Projects</a>
+        <a class="px-3 py-2 rounded-full bg-blue-600 text-white" href="chat.html">Chat</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="settings.html">Settings</a>
+      </nav>
+    </header>
+
+    <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="rounded-xl bg-slate-50 p-4">
+        <p class="text-sm text-slate-500">Assistant</p>
+        <p class="mt-2">The next step is to validate the complete conversational flow from the browser and confirm the provider fallback works smoothly.</p>
+      </div>
+      <form class="mt-4 flex flex-col md:flex-row gap-3">
+        <input class="flex-1 rounded-xl border border-slate-300 px-4 py-3" placeholder="Ask about the workspace or current task" />
+        <button class="rounded-xl bg-blue-600 px-4 py-3 text-white">Send</button>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

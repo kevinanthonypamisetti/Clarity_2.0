@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarity 2.1 | Tasks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div class="max-w-6xl mx-auto p-6 md:p-10">
+    <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Clarity workspace</p>
+        <h1 class="text-3xl font-semibold">Tasks</h1>
+        <p class="text-slate-600 mt-2">Keep priorities visible and move work forward with a lightweight task board.</p>
+      </div>
+      <nav class="flex flex-wrap gap-2 text-sm">
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="dashboard.html">Dashboard</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="thoughts.html">Thoughts</a>
+        <a class="px-3 py-2 rounded-full bg-blue-600 text-white" href="tasks.html">Tasks</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="projects.html">Projects</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="chat.html">Chat</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="settings.html">Settings</a>
+      </nav>
+    </header>
+
+    <section class="grid md:grid-cols-3 gap-4">
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-semibold">Today</h2>
+          <span class="text-sm text-slate-500">3</span>
+        </div>
+        <ul class="space-y-3 text-sm">
+          <li class="rounded-xl bg-slate-50 p-3">Review chat provider health and fallback behavior</li>
+          <li class="rounded-xl bg-slate-50 p-3">Polish navigation and page consistency</li>
+          <li class="rounded-xl bg-slate-50 p-3">Capture browser QA notes</li>
+        </ul>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-semibold">This week</h2>
+          <span class="text-sm text-slate-500">5</span>
+        </div>
+        <ul class="space-y-3 text-sm">
+          <li class="rounded-xl bg-slate-50 p-3">Finish the remaining workspace pages</li>
+          <li class="rounded-xl bg-slate-50 p-3">Validate persistence and refresh behavior</li>
+          <li class="rounded-xl bg-slate-50 p-3">Add feedback loops for chat errors</li>
+        </ul>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-semibold">Next</h2>
+          <span class="text-sm text-slate-500">2</span>
+        </div>
+        <ul class="space-y-3 text-sm">
+          <li class="rounded-xl bg-slate-50 p-3">Ship the first polished deployment-ready flow</li>
+          <li class="rounded-xl bg-slate-50 p-3">Document the architecture for collaborators</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarity 2.1 | Settings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div class="max-w-6xl mx-auto p-6 md:p-10">
+    <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Clarity workspace</p>
+        <h1 class="text-3xl font-semibold">Settings</h1>
+        <p class="text-slate-600 mt-2">Control the workspace defaults and provider configuration.</p>
+      </div>
+      <nav class="flex flex-wrap gap-2 text-sm">
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="dashboard.html">Dashboard</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="thoughts.html">Thoughts</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="tasks.html">Tasks</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="projects.html">Projects</a>
+        <a class="px-3 py-2 rounded-full bg-white border border-slate-200" href="chat.html">Chat</a>
+        <a class="px-3 py-2 rounded-full bg-blue-600 text-white" href="settings.html">Settings</a>
+      </nav>
+    </header>
+
+    <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-xl font-semibold mb-4">Workspace settings</h2>
+      <div class="space-y-3 text-sm">
+        <div class="flex items-center justify-between rounded-xl bg-slate-50 p-3">
+          <span>Provider mode</span>
+          <span class="font-medium">Local fallback</span>
+        </div>
+        <div class="flex items-center justify-between rounded-xl bg-slate-50 p-3">
+          <span>Persistence</span>
+          <span class="font-medium">Browser storage</span>
+        </div>
+        <div class="flex items-center justify-between rounded-xl bg-slate-50 p-3">
+          <span>Developer console</span>
+          <span class="font-medium">Enabled</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

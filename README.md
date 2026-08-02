@@ -67,6 +67,23 @@ backend/
 - Open Chat and ask a question
 - Use Ctrl+Shift+A to open the developer console
 
+## Deployment notes
+
+For a public deployment, set the backend to expose the Express app on the host port and provide any required env vars:
+
+```bash
+PORT=3000
+OPENAI_API_KEY=your_key_here
+```
+
+If the frontend is served from the same Express app, no extra API URL changes are required. If the frontend and backend are split across hosts, set a global API base before loading the app:
+
+```html
+<script>
+  window.CLARITY_API_BASE = 'https://your-backend-url';
+</script>
+```
+
 ## Notes
 
 - The app works locally without PostgreSQL

@@ -10,8 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve static frontend pages from the public folder
+// Serve static frontend pages from both the backend public folder and the repo public folder
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
