@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clarity 2.1 | Tasks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#4648d4",
+                      "surface-bright": "#f9f9ff",
+                      "surface-container": "#e9edff",
+                      "surface-dim": "#d3daef",
+                      "inverse-surface": "#293040",
+                      "on-primary-fixed-variant": "#004395",
+                      "surface-container-high": "#e1e8fd",
+                      "primary-container": "#2170e4",
+                      "on-primary-container": "#fefcff",
+                      "on-surface": "#141b2b",
+                      "background": "#f9f9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#424754",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#dce2f7",
+                      "on-tertiary-fixed": "#191c1e",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c5c7c8",
+                      "tertiary-fixed": "#e1e2e4",
+                      "primary-fixed": "#d8e2ff",
+                      "secondary-fixed": "#e1e0ff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#adc6ff",
+                      "secondary-container": "#6063ee",
+                      "on-tertiary-container": "#fbfcfe",
+                      "on-error": "#ffffff",
+                      "primary": "#0058be",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "outline-variant": "#c2c6d6",
+                      "on-background": "#141b2b",
+                      "on-secondary-fixed": "#07006c",
+                      "surface-tint": "#005ac2",
+                      "inverse-on-surface": "#edf0ff",
+                      "on-secondary-fixed-variant": "#2f2ebe",
+                      "tertiary-container": "#727577",
+                      "on-primary-fixed": "#001a42",
+                      "inverse-primary": "#adc6ff",
+                      "outline": "#727785",
+                      "surface-container-low": "#f1f3ff",
+                      "tertiary": "#5a5c5e",
+                      "on-secondary-container": "#fffbff",
+                      "surface-variant": "#dce2f7",
+                      "secondary-fixed-dim": "#c0c1ff",
+                      "surface": "#f9f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "container-max": "1200px",
+                      "huge": "80px",
+                      "sm": "8px",
+                      "xxl": "48px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "code": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "code": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.7); }
+        .kanban-column { min-width: 320px; max-width: 380px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+        .ai-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full z-30 p-md bg-surface-container-low border-r border-outline-variant w-72">
+<div class="flex items-center gap-3 px-3 py-6 mb-4">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">Clarity 2.1</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">lightbulb</span> Thoughts
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">task_alt</span> Tasks
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">rocket_launch</span> Projects
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">book</span> Journal
+            </a>
+<div class="pt-4 pb-2 px-4 uppercase text-[10px] font-bold tracking-widest text-outline">WORKSPACE</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">chat</span> Chat
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-4 flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional male designer named Alex Rivers with a thoughtful expression, warm studio lighting, minimalist aesthetic, blurred office background, high-resolution photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCmmPcN1tUyfiEfJ2HTk7mdZ7xp22TxJ4XJ7iqFqqpJQ3EHrCQEM7bCc73oTXxImAwhv1SyVahNtk6C5dI6Y8zwAS9oW4qGcFAQ-9WraO5nhaDiM1kmTaAo9MLLVSF7KLNMl_FFyGyA4Hcw6D7EkhqvfeIHyu3x59nduE7B0Z99gLbOyp8MqUW5CBAqrGTuD3WS16H-G9uhx5V4KARfFIeljKaCqGAv7YLIDomGJQ_B4faSnOY9oIxlQ"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md font-bold truncate">Alex Rivers</p>
+<p class="text-[10px] text-outline truncate">Pro Plan • Personal</p>
+</div>
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-40 lg:pl-72 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 hover:bg-surface-container-low rounded-full transition-transform active:scale-90">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface">Tasks</h1>
+</div>
+<div class="flex items-center gap-2">
+<!-- View Toggle -->
+<div class="flex bg-surface-container-low rounded-full p-1 mr-4">
+<button class="px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full flex items-center gap-2 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined !text-[18px]">view_kanban</span> Kanban
+                </button>
+<button class="px-3 py-1 text-on-surface-variant hover:bg-surface-container-high rounded-full flex items-center gap-2 font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined !text-[18px]">list</span> List
+                </button>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-transform active:scale-95">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="hidden sm:flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined !text-[20px]">add</span> New Task
+                </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="lg:pl-72 pt-16 pb-20 lg:pb-0 min-h-screen">
+<div class="p-gutter max-w-[1400px] mx-auto h-[calc(100vh-64px)] overflow-x-auto custom-scrollbar flex gap-6 items-start">
+<!-- Column: To Do -->
+<section class="kanban-column flex flex-col h-full shrink-0">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<h2 class="font-label-md text-label-md font-bold uppercase tracking-wider text-on-surface-variant">To Do</h2>
+<span class="bg-surface-container px-2 py-0.5 rounded-full text-[10px] font-bold text-on-surface-variant">4</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex-1 space-y-4 overflow-y-auto pr-1 custom-scrollbar">
+<!-- Task Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.04)] transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container text-[10px] font-bold rounded uppercase">High</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors !text-[20px]">open_in_new</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight mb-2">Complete System Architecture Redesign</h3>
+<p class="text-on-surface-variant text-body-md mb-4 line-clamp-2">Outline the new microservices structure for the 3.0 rollout including data persistence layers.</p>
+<!-- AI Suggestion Badge -->
+<div class="flex items-center gap-2 mb-4 bg-primary-container/10 border border-primary-container/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary !text-[16px] ai-pulse" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[11px] font-semibold text-primary">AI Suggested: Priority Peak</span>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant pt-3">
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined !text-[14px]">calendar_today</span>
+<span class="text-[11px] font-medium">Oct 24</span>
+</div>
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female developer with glasses, bright studio lighting, neutral background, minimalist professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0ozkHnm2Cz0jaN3qmQ-gDEcCY8W856CImeNKTLgMgbxEyrfUrzGufGbb3P0ESANLAo8RYHZ_9FSDISwyvk4q-PR67HBjnK6rw9xH_1XGeX9MTPz3isMyXRdrIZaJq6Uww-1nTeMG1HAmdyrdWRjTOnoNmfGQ7jnI1gAqXd64Bko7knEKYi4jrwgtC-51uCLvdQHQ-D-IKnYDDK517Gbwjs4YORHx9ncRtcsF4JFU-gM7lhhboDxcLwQ"/>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-primary text-[10px] text-white flex items-center justify-center font-bold">+2</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Task Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.04)] transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded uppercase">Medium</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Update API Documentation</h3>
+<div class="flex items-center justify-between mt-4">
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined !text-[14px]">attach_file</span>
+<span class="text-[11px] font-medium">3 Docs</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up of a modern corporate professional avatar, soft natural lighting, elegant design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsS7G37ARe97Jq_yDA1HDvzj7o_Bmk5S3zvXQAPyZlm4d9Fx7doLgpkCUij02ZHukmNmTseMzDt7Gryzkl4GJVB2g3fz3EUyI14ZC5G1Y0uVz4RWwn5LmoRiM-Sq6G2xmyyRBUhYlXq-fPNqCsNO4iOyanmzhoBSI6Duz0zba1ucGUVM8pZpSD29FF4B0AbcThEq5DJYLIbWD77sC6wv9TMEahRyWOZE4qhy_2GljPrXr4NjjvXFPc4g"/>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-2 border-dashed border-outline-variant rounded-xl text-outline hover:border-primary hover:text-primary transition-all font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span> Add Task
+                    </button>
+</div>
+</section>
+<!-- Column: In Progress -->
+<section class="kanban-column flex flex-col h-full shrink-0">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h2 class="font-label-md text-label-md font-bold uppercase tracking-wider text-on-surface-variant">In Progress</h2>
+<span class="bg-surface-container px-2 py-0.5 rounded-full text-[10px] font-bold text-on-surface-variant">2</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex-1 space-y-4 overflow-y-auto pr-1 custom-scrollbar">
+<!-- Task Card 3 -->
+<div class="bg-surface-container-lowest border border-primary/30 p-4 rounded-xl shadow-[0_4px_12px_rgba(0,88,190,0.06)] hover:shadow-[0_8px_20px_rgba(0,88,190,0.1)] transition-all cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px] font-bold rounded uppercase">In Progress</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Refine Brand Visual Tokens</h3>
+<p class="text-on-surface-variant text-body-md mb-4">Polishing the fluid-fixed hybrid layout system for mobile viewports.</p>
+<div class="w-full bg-surface-container rounded-full h-1.5 mb-4">
+<div class="bg-primary h-1.5 rounded-full" style="width: 65%;"></div>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant pt-3">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-[14px]">schedule</span>
+<span class="text-[11px] font-bold">Today</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Vibrant portrait of a digital artist at work, creative studio lighting with blue and purple highlights, minimalist professional profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6XI4RaZckr86iMNEAYT1YdAar8er6eIGI56gtruoDOBNubAQuwqJBRxKOTq02D0TnKchudA9hwZm75n_FW2pR_gxKbm538N_YUkQ9UeDTpRSKBbohJsz6yM4APzUWSXG0SZBMlqhO3sm7AFjVAvph_enYb9uNLhrNMvd7m3DnWd2YUTFlcAQOY-rvfx-EQ3o25HAYXr38myPikGegTnXL09d8f-iqeuD1D4gjPj0fE4SUBdrBZ1tNLA"/>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-2 border-dashed border-outline-variant rounded-xl text-outline hover:border-primary hover:text-primary transition-all font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span> Add Task
+                    </button>
+</div>
+</section>
+<!-- Column: Done -->
+<section class="kanban-column flex flex-col h-full shrink-0">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<h2 class="font-label-md text-label-md font-bold uppercase tracking-wider text-on-surface-variant">Done</h2>
+<span class="bg-surface-container px-2 py-0.5 rounded-full text-[10px] font-bold text-on-surface-variant">12</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex-1 space-y-4 overflow-y-auto pr-1 custom-scrollbar">
+<!-- Task Card 4 -->
+<div class="bg-surface-container/50 border border-outline-variant/50 p-4 rounded-xl opacity-75 grayscale-[0.5] hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded uppercase">Low</span>
+<span class="material-symbols-outlined text-secondary !text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-through opacity-60">Setup Workspace Env</h3>
+<div class="flex items-center justify-between mt-4">
+<span class="text-[11px] font-medium text-outline">Completed Oct 20</span>
+<div class="w-6 h-6 rounded-full bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Casual profile picture of a young tech professional, natural outdoor lighting, high quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbuH7fWUgofRofaFPd6_UsCotOmPC9r2cx0rKwtnY7lAXhLLOI9jMZQ05obHDDqZF4lwgBKrBZl3bL6I-u9o_2PSmT_ybU9sJpc6xbFu21YN-yuCN6PTWpONWqh2EtszknyguR15GIpX5ypRB9qMs2_sGfs_1qEFRefx_GdPfnh9xbq95GIOi9L6OZncSEARvyWkuXefsDRZBFydZragRQPwivfQCBxGSTxz13mE8ky-NjHmfB14mhuA"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Empty State / Suggest Column -->
+<section class="kanban-column flex flex-col h-full shrink-0 opacity-40 hover:opacity-100 transition-opacity">
+<div class="border-2 border-dashed border-outline-variant h-full rounded-2xl flex flex-col items-center justify-center p-8 text-center gap-4">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-3xl">markdown_copy</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Add Custom Column</p>
+<p class="text-on-surface-variant text-[12px] mt-1">Organize your flow by project phase or category.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 lg:hidden bg-surface/80 backdrop-blur-md border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="font-label-md text-label-md">Thoughts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl px-3 py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+</nav>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-24 right-6 lg:bottom-10 lg:right-10 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-90 transition-all z-40 group">
+<span class="material-symbols-outlined !text-[28px] transition-transform group-hover:rotate-90">add</span>
+</button>
+<script>
+        // Simple Micro-interaction for column scrolling
+        const mainCanvas = document.querySelector('main > div');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        mainCanvas.addEventListener('mousedown', (e) => {
+            isDown = true;
+            mainCanvas.classList.add('cursor-grabbing');
+            startX = e.pageX - mainCanvas.offsetLeft;
+            scrollLeft = mainCanvas.scrollLeft;
+        });
+        mainCanvas.addEventListener('mouseleave', () => {
+            isDown = false;
+            mainCanvas.classList.remove('cursor-grabbing');
+        });
+        mainCanvas.addEventListener('mouseup', () => {
+            isDown = false;
+            mainCanvas.classList.remove('cursor-grabbing');
+        });
+        mainCanvas.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - mainCanvas.offsetLeft;
+            const walk = (x - startX) * 2;
+            mainCanvas.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body></html>

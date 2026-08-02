@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clarity 2.1 | Thought Streams</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                secondary: "#4648d4",
+                "surface-bright": "#f9f9ff",
+                "surface-container": "#e9edff",
+                "surface-dim": "#d3daef",
+                "inverse-surface": "#293040",
+                "on-primary-fixed-variant": "#004395",
+                "surface-container-high": "#e1e8fd",
+                "primary-container": "#2170e4",
+                "on-primary-container": "#fefcff",
+                "on-surface": "#141b2b",
+                background: "#f9f9ff",
+                "on-tertiary": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-primary": "#ffffff",
+                "on-surface-variant": "#424754",
+                "error-container": "#ffdad6",
+                error: "#ba1a1a",
+                "surface-container-highest": "#dce2f7",
+                "on-tertiary-fixed": "#191c1e",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#c5c7c8",
+                "tertiary-fixed": "#e1e2e4",
+                "primary-fixed": "#d8e2ff",
+                "secondary-fixed": "#e1e0ff",
+                "on-secondary": "#ffffff",
+                "primary-fixed-dim": "#adc6ff",
+                "secondary-container": "#6063ee",
+                "on-tertiary-container": "#fbfcfe",
+                "on-error": "#ffffff",
+                primary: "#0058be",
+                "on-tertiary-fixed-variant": "#444749",
+                "outline-variant": "#c2c6d6",
+                "on-background": "#141b2b",
+                "on-secondary-fixed": "#07006c",
+                "surface-tint": "#005ac2",
+                "inverse-on-surface": "#edf0ff",
+                "on-secondary-fixed-variant": "#2f2ebe",
+                "tertiary-container": "#727577",
+                "on-primary-fixed": "#001a42",
+                "inverse-primary": "#adc6ff",
+                outline: "#727785",
+                "surface-container-low": "#f1f3ff",
+                tertiary: "#5a5c5e",
+                "on-secondary-container": "#fffbff",
+                "surface-variant": "#dce2f7",
+                "secondary-fixed-dim": "#c0c1ff",
+                surface: "#f9f9ff"
+              },
+              borderRadius: {
+                DEFAULT: "0.25rem",
+                lg: "0.5rem",
+                xl: "0.75rem",
+                full: "9999px"
+              },
+              spacing: {
+                gutter: "24px",
+                unit: "4px",
+                lg: "24px",
+                xl: "32px",
+                "margin-mobile": "16px",
+                xs: "4px",
+                md: "16px",
+                "container-max": "1200px",
+                huge: "80px",
+                sm: "8px",
+                xxl: "48px"
+              },
+              fontFamily: {
+                "headline-lg-mobile": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-sm": ["Inter"],
+                "body-lg": ["Inter"],
+                code: ["Inter"],
+                "headline-md": ["Inter"],
+                display: ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-md": ["Inter"]
+              },
+              fontSize: {
+                "headline-lg-mobile": ["24px", { lineHeight: "1.2", fontWeight: "600" }],
+                "body-md": ["14px", { lineHeight: "1.6", fontWeight: "400" }],
+                "headline-sm": ["18px", { lineHeight: "1.4", fontWeight: "600" }],
+                "body-lg": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                code: ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+                "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                display: ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+                "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+                "label-md": ["12px", { lineHeight: "1", letterSpacing: "0.01em", fontWeight: "500" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .thought-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .thought-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 20px;
+            transition: transform 0.2s ease-out;
+        }
+        .thought-card:hover { transform: translateY(-3px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-sm border-b border-outline-variant">
+<div class="max-w-[1200px] mx-auto px-4 py-4 flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-md text-headline-md">Thought Streams</h1>
+<p class="text-body-md text-on-surface-variant">Capture and connect your latest ideas in a single flow.</p>
+</div>
+</div>
+<button class="inline-flex items-center gap-2 bg-primary text-white rounded-full px-4 py-3 font-label-md hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add</span>
+New Thought
+</button>
+</div>
+</header>
+<main class="pt-28 pb-24 max-w-[1200px] mx-auto px-4">
+<section class="grid gap-6 lg:grid-cols-[1.25fr_0.85fr] mb-8">
+<div class="bg-surface-container-lowest rounded-[32px] border border-outline-variant p-8 shadow-sm">
+<div class="flex items-center justify-between gap-4 mb-8">
+<div>
+<p class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary/80">Source Collections</p>
+<h2 class="font-display text-display mt-2">Your active note clusters</h2>
+</div>
+<button class="rounded-full border border-outline-variant px-4 py-3 text-body-md hover:border-primary hover:text-primary transition-colors">View All</button>
+</div>
+<div class="grid gap-4 sm:grid-cols-2">
+<article class="rounded-3xl bg-white border border-outline-variant p-6">
+<div class="flex items-center justify-between mb-4">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em]">AI</p>
+<span class="rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] uppercase">Auto</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Model Prompts</h3>
+<p class="text-body-md text-on-surface-variant">Store the prompts, patterns, and narrative instructions you used for your most recent workflow launches.</p>
+</article>
+<article class="rounded-3xl bg-white border border-outline-variant p-6">
+<div class="flex items-center justify-between mb-4">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em]">Brain</p>
+<span class="rounded-full bg-secondary/10 text-secondary px-3 py-1 text-[11px] uppercase">Memory</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Thought Archive</h3>
+<p class="text-body-md text-on-surface-variant">References, past decisions, and rapid insight cards all live here for easy retrieval.</p>
+</article>
+</div>
+</div>
+<div class="space-y-6">
+<div class="rounded-[32px] bg-surface-container-lowest border border-outline-variant p-8 shadow-sm">
+<h3 class="font-headline-sm text-headline-sm mb-4">Weekly Thought Trends</h3>
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+<div class="rounded-3xl bg-white p-6">
+<p class="text-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] mb-3">Active Cards</p>
+<p class="font-headline-md text-headline-md">82</p>
+</div>
+<div class="rounded-3xl bg-white p-6">
+<p class="text-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] mb-3">Ideas Sparked</p>
+<p class="font-headline-md text-headline-md">54</p>
+</div>
+<div class="rounded-3xl bg-white p-6">
+<p class="text-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] mb-3">Related Topics</p>
+<p class="font-headline-md text-headline-md">23</p>
+</div>
+<div class="rounded-3xl bg-white p-6">
+<p class="text-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] mb-3">Capture Rate</p>
+<p class="font-headline-md text-headline-md">93%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pb-12">
+<div class="flex items-center justify-between gap-4 mb-6">
+<h2 class="font-headline-md text-headline-md">Live Thought Stream</h2>
+<div class="flex gap-2">
+<button class="rounded-full border border-outline-variant px-4 py-2 text-label-md hover:border-primary hover:text-primary transition-colors">Sort</button>
+<button class="rounded-full border border-outline-variant px-4 py-2 text-label-md hover:border-primary hover:text-primary transition-colors">Filter</button>
+</div>
+</div>
+<div class="thought-grid">
+<article class="thought-card col-span-12 lg:col-span-8 p-8">
+<div class="flex items-center justify-between gap-4 mb-6">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em]">Design</p>
+<h3 class="font-headline-sm text-headline-sm">User flows should feel as light as the interface.</h3>
+</div>
+<button class="rounded-full bg-primary/10 px-4 py-2 text-primary text-label-md">Draft</button>
+</div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed mb-6">The next wave of products will hide complexity behind structured intuition. Every click should be a promise of meaning not just motion.</p>
+<div class="grid gap-4 sm:grid-cols-2">
+<div class="rounded-3xl bg-surface p-6">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] mb-2">Tags</p>
+<p class="text-body-md">#clarity #workflows #design</p>
+</div>
+<div class="rounded-3xl bg-surface p-6">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] mb-2">Related</p>
+<p class="text-body-md">Workspace logic, active memory, gestures</p>
+</div>
+</div>
+</article>
+<article class="thought-card col-span-12 lg:col-span-4 p-8">
+<div class="flex items-center justify-between gap-4 mb-6">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em]">Journal</p>
+<h3 class="font-headline-sm text-headline-sm">Momentum is built from consistent small wins.</h3>
+</div>
+<span class="text-[11px] text-on-surface-variant">Today</span>
+</div>
+<p class="text-body-md text-on-surface-variant leading-relaxed mb-6">Push progress indicators to the next layer by framing them around user emotions instead of raw completion.</p>
+<button class="rounded-full bg-secondary text-white px-4 py-3 text-label-md hover:bg-secondary/90 transition-colors">Turn Insight Into Action</button>
+</article>
+<article class="thought-card col-span-12 lg:col-span-6 p-8">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-3xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em]">Launch</p>
+<h3 class="font-headline-sm text-headline-sm">Ship faster by simplifying workspace intent.</h3>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant">Summaries should be built into the interface so teams can prioritize decisions without reading every detail.</p>
+</article>
+<article class="thought-card col-span-12 lg:col-span-6 p-8">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-3xl bg-green-50 flex items-center justify-center text-green-700">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em]">Balance</p>
+<h3 class="font-headline-sm text-headline-sm">A calm workspace flows like water.</h3>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant">Introduce quiet signals instead of constant alerts. Focus should be preserved through gentle, meaningful interruptions.</p>
+</article>
+</div>
+</section>
+</main>
+</body></html>

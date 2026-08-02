@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarity MVP</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div style="width:42px;height:42px;border-radius:14px;background:rgba(37,99,235,.12);display:grid;place-items:center;color:#2563eb;">C</div>
+        <div>
+          <strong>Clarity</strong>
+          <p style="margin:0;font-size:0.9rem;color:#475569;">MVP shell</p>
+        </div>
+      </div>
+      <nav id="main-nav"></nav>
+      <div style="margin-top: 32px; padding: 18px; border-radius: 20px; background: #f8fafc; border: 1px solid rgba(219,226,240,0.8);">
+        <strong>Quick tip</strong>
+        <p style="margin: 10px 0 0; color: #475569; font-size: 0.94rem; line-height: 1.6;">Use <kbd>Ctrl + Shift + A</kbd> to open the developer console.</p>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div>
+          <h1 id="topbar-title">Dashboard</h1>
+          <p id="topbar-subtitle" style="margin:6px 0 0; color:#475569;">Your overview, activity, and growth metrics.</p>
+        </div>
+        <div class="status-stack">
+          <span class="badge">Health: pending</span>
+          <span class="badge">Provider: openai</span>
+        </div>
+      </header>
+      <main id="app-main" class="content"></main>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div id="command-palette" class="overlay" role="dialog" aria-modal="true">
+    <div class="overlay-panel" style="position: relative;">
+      <button id="command-close" class="close-btn" aria-label="Close command palette">✕</button>
+      <h3>Command palette</h3>
+      <input id="command-input" class="command-input" placeholder="Type a page or action..." />
+      <div id="command-list" class="command-list"></div>
+    </div>
+  </div>
+
+  <div id="dev-console-overlay" class="overlay" role="dialog" aria-modal="true">
+    <div class="overlay-panel" style="position: relative;">
+      <button id="dev-close" class="close-btn" aria-label="Close developer console">✕</button>
+      <h3>Developer console</h3>
+      <p style="color:#475569;">Hidden workspace diagnostics, provider health, memory stats, logs, and admin actions.</p>
+      <div id="dev-console-body" style="margin-top: 18px;"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

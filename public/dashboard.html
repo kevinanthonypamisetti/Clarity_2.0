@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clarity 2.1 | Thoughts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#4648d4",
+                      "surface-bright": "#f9f9ff",
+                      "surface-container": "#e9edff",
+                      "surface-dim": "#d3daef",
+                      "inverse-surface": "#293040",
+                      "on-primary-fixed-variant": "#004395",
+                      "surface-container-high": "#e1e8fd",
+                      "primary-container": "#2170e4",
+                      "on-primary-container": "#fefcff",
+                      "on-surface": "#141b2b",
+                      "background": "#f9f9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#424754",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#dce2f7",
+                      "on-tertiary-fixed": "#191c1e",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c5c7c8",
+                      "tertiary-fixed": "#e1e2e4",
+                      "primary-fixed": "#d8e2ff",
+                      "secondary-fixed": "#e1e0ff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#adc6ff",
+                      "secondary-container": "#6063ee",
+                      "on-tertiary-container": "#fbfcfe",
+                      "on-error": "#ffffff",
+                      "primary": "#0058be",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "outline-variant": "#c2c6d6",
+                      "on-background": "#141b2b",
+                      "on-secondary-fixed": "#07006c",
+                      "surface-tint": "#005ac2",
+                      "inverse-on-surface": "#edf0ff",
+                      "on-secondary-fixed-variant": "#2f2ebe",
+                      "tertiary-container": "#727577",
+                      "on-primary-fixed": "#001a42",
+                      "inverse-primary": "#adc6ff",
+                      "outline": "#727785",
+                      "surface-container-low": "#f1f3ff",
+                      "tertiary": "#5a5c5e",
+                      "on-secondary-container": "#fffbff",
+                      "surface-variant": "#dce2f7",
+                      "secondary-fixed-dim": "#c0c1ff",
+                      "surface": "#f9f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "container-max": "1200px",
+                      "huge": "80px",
+                      "sm": "8px",
+                      "xxl": "48px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "code": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "code": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .bento-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            transition: all 0.2s ease-out;
+        }
+        .bento-card:hover {
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- Desktop Navigation Drawer -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full z-30 p-md bg-surface-container-low border-r border-outline-variant w-72">
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">cloud</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">Clarity 2.1</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="font-label-md text-label-md">Thoughts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">task_alt</span>
+<span class="font-label-md text-label-md">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">book</span>
+<span class="font-label-md text-label-md">Journal</span>
+</a>
+<div class="pt-6 pb-2 px-4 uppercase text-[10px] font-bold tracking-widest text-on-surface-variant/50">Connectivity</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-3 p-3 bg-surface-container-high/50 rounded-xl">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist studio portrait of a professional young man with short brown hair and a friendly expression, wearing a simple grey crew-neck sweater. The lighting is soft and even, typical of high-end corporate headshots for a tech company. The background is a solid, neutral off-white, maintaining the bright and airy aesthetic of the Clarity 2.1 design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAsMnrFoKWy17P_cLltn9u8fLfi3qd23_7yKcAMA8kzkn2hOKyIY6TY2HHp_Feqz9MIcdxa95-E78gktyAj8ZnXMQcZQNqwfbVs_pKa2vCF2A7KaWsjRUfC1u6SJzbr649cKhb9Z9L-DEItR8GICuDmdqbSh8Fm41T8wVMPXgNCaA3vBBVPaJT8iwrsj1bt9_7L0yr0noMYmcH7Lbzdl-3WOgBhgJhXfm43yPqo41lfnY3klDkoW5PWA"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Alex Rivers</span>
+<span class="text-[11px] text-on-surface-variant">Pro Plan</span>
+</div>
+<button class="ml-auto material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="lg:ml-72 min-h-screen pb-24 lg:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 lg:left-72 right-0 h-16 z-40 bg-surface/80 backdrop-blur-md px-gutter flex items-center justify-between border-b border-outline-variant">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<span class="material-symbols-outlined lg:hidden text-primary">menu</span>
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Search your thoughts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3 ml-4">
+<button class="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+</button>
+<button class="bg-primary text-white font-label-md px-5 py-2.5 rounded-full flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="hidden sm:inline">New Thought</span>
+</button>
+</div>
+</header>
+<!-- Canvas Area -->
+<div class="pt-24 px-6 lg:px-12 max-w-[1400px] mx-auto">
+<!-- Quick Insights / Mood Section -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-sm text-headline-sm">Morning Focus</h2>
+<div class="flex items-center gap-2">
+<span class="text-label-md text-on-surface-variant">Current Mood:</span>
+<div class="flex gap-1 bg-surface-container-low p-1 rounded-full border border-outline-variant">
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white transition-colors" title="Focus">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">target</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-white shadow-sm transition-colors" title="Creative">
+<span class="material-symbols-outlined text-[18px] text-secondary" style="font-variation-settings: 'FILL' 1;">palette</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white transition-colors" title="Calm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bento-grid grid-cols-1 md:grid-cols-12">
+<!-- Featured Editor Card -->
+<div class="bento-card col-span-12 lg:col-span-8 p-lg flex flex-col min-h-[400px]">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<input class="font-headline-md text-headline-md border-none focus:ring-0 p-0 w-full bg-transparent" type="text" value="Architecture Vision 2025"/>
+</div>
+<!-- Editor Toolbar -->
+<div class="flex items-center gap-4 py-2 border-y border-outline-variant mb-6 text-on-surface-variant overflow-x-auto no-scrollbar">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">format_list_bulleted</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">link</span></button>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">image</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">code</span></button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-label-md text-on-surface-variant/60">Saved 2m ago</span>
+<span class="material-symbols-outlined text-[16px] text-green-500">cloud_done</span>
+</div>
+</div>
+<textarea class="flex-1 w-full border-none focus:ring-0 p-0 text-body-lg resize-none bg-transparent placeholder-on-surface-variant/30 leading-relaxed" placeholder="Start typing your vision... Use / for shortcuts." spellcheck="false">The integration of generative models into our core workflow requires a paradigm shift in how we perceive the 'workspace'. It shouldn't just be a static container, but a living partner that anticipates structural needs based on context.
+
+### Key Pillars:
+- Fluid Spacing: Elements that breathe.
+- Contextual Intelligence: Tools that appear only when needed.
+- Tonal Depth: Using shadows to define priority.
+
+This is the foundation for Clarity 2.1.</textarea>
+<div class="mt-6 flex items-center flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-label-md rounded-full">#strategy</span>
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-label-md rounded-full">#design-system</span>
+<button class="w-8 h-8 rounded-full border border-dashed border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<!-- Pinned / Favorites Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<div class="bento-card p-md flex flex-col h-full bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-4 px-2">
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider text-on-surface-variant/70">Favorites</span>
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="space-y-3">
+<div class="p-4 rounded-xl border border-outline-variant hover:border-primary/40 hover:bg-primary-container/5 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-md text-label-md font-bold group-hover:text-primary transition-colors">Weekly Review Notes</h4>
+<span class="text-[10px] text-on-surface-variant">Oct 12</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Summarizing the progress on the core engine refactor and stakeholder feedback...</p>
+</div>
+<div class="p-4 rounded-xl border border-outline-variant hover:border-primary/40 hover:bg-primary-container/5 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-md text-label-md font-bold group-hover:text-primary transition-colors">Project: Horizon</h4>
+<span class="text-[10px] text-on-surface-variant">Oct 10</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Exploring new frontiers in spatial UI design and responsive layouts for 8K monitors.</p>
+</div>
+<div class="p-4 rounded-xl border border-outline-variant hover:border-primary/40 hover:bg-primary-container/5 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-md text-label-md font-bold group-hover:text-primary transition-colors">Idea: Mesh Gradients</h4>
+<span class="text-[10px] text-on-surface-variant">Oct 08</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Implementing dynamic backgrounds that react to user mouse movement for better engagement.</p>
+</div>
+</div>
+<button class="mt-4 w-full py-2 text-label-md text-primary font-bold hover:bg-primary/5 rounded-lg transition-colors">View All Favorites</button>
+</div>
+</div>
+</div>
+</section>
+<!-- All Thoughts Grid -->
+<section class="mb-huge">
+<div class="flex items-center justify-between mb-xl">
+<h3 class="font-headline-sm text-headline-sm">All Thoughts</h3>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-label-md flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+                            Recently Edited
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Note Card 1 -->
+<div class="bento-card p-lg group cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</span>
+</div>
+<div class="w-10 h-10 bg-surface-container-high rounded-xl flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<h4 class="font-headline-sm text-[16px] mb-2 group-hover:text-primary transition-colors">Meeting with AI Lab</h4>
+<p class="text-body-md text-on-surface-variant mb-6 line-clamp-3">Discussed the upcoming LLM fine-tuning protocols and how we can integrate personal vector stores directly into the Clarity UI for faster retrieval.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-blue-400"></span>
+<span class="text-[11px] text-on-surface-variant">Knowledge</span>
+</div>
+<span class="text-[11px] text-on-surface-variant/60 italic">3 hours ago</span>
+</div>
+</div>
+<!-- Note Card 2 (Image Card) -->
+<div class="bento-card overflow-hidden group cursor-pointer flex flex-col">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A sophisticated digital rendering of a sleek, futuristic workspace. Minimalist white furniture sits against a backdrop of a large glass window overlooking a soft-focus city at twilight. The room is filled with soft purple and blue ambient lighting from a hidden LED strip, creating a serene and high-tech mood that aligns with a productivity app's visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC69cqxaQnrESbUpPAGutf3Rrz9poDxmlOXMTdtOdKmUOjQ5Lwi9GCdOEESgFba793lgK4Sspr1tOufQHyIHiIvqyGEWhUG7PaO3vaKwkcByPn6CmsWnhpTDS6wH-1jwwsnEYKligQCySwcDdpC-BJm1He1nKo7mQUADb5UqoCRk7OXlqvqbM59JK1j-O9aQ-ATvWorQIM4xvGEZFTZmab7pC7R3W2gCl0R3BsLopLaGYmeX9xRIuqULQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h4 class="font-headline-sm text-[16px] mb-2 group-hover:text-primary transition-colors">Workspace Inspiration</h4>
+<p class="text-body-md text-on-surface-variant mb-6 line-clamp-2">Collected references for the new studio layout. Focusing on natural light and ergonomic flow.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-purple-400"></span>
+<span class="text-[11px] text-on-surface-variant">Personal</span>
+</div>
+<span class="text-[11px] text-on-surface-variant/60 italic">Yesterday</span>
+</div>
+</div>
+</div>
+<!-- Note Card 3 -->
+<div class="bento-card p-lg group cursor-pointer border-dashed border-2 bg-surface-container-low/30 hover:bg-surface-container-low transition-all flex flex-col items-center justify-center min-h-[220px]">
+<div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 text-on-surface-variant group-hover:text-primary transition-all group-hover:scale-110">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Quick Snap</span>
+<span class="text-[11px] text-on-surface-variant">Record a thought instantly</span>
+</div>
+<!-- Note Card 4 -->
+<div class="bento-card p-lg group cursor-pointer relative overflow-hidden">
+<div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center mb-4 text-green-600">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<h4 class="font-headline-sm text-[16px] mb-2 group-hover:text-primary transition-colors">Tech Upgrade List</h4>
+<ul class="text-body-md text-on-surface-variant mb-6 space-y-1">
+<li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-outline"></span> Ultrawide Monitor</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-outline"></span> Mechanical Keyboard</li>
+</ul>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-green-400"></span>
+<span class="text-[11px] text-on-surface-variant">Shopping</span>
+</div>
+<span class="text-[11px] text-on-surface-variant/60 italic">Oct 11</span>
+</div>
+</div>
+<!-- Note Card 5 -->
+<div class="bento-card p-lg group cursor-pointer relative overflow-hidden">
+<div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center mb-4 text-yellow-600">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<h4 class="font-headline-sm text-[16px] mb-2 group-hover:text-primary transition-colors">Marketing Hook Ideas</h4>
+<p class="text-body-md text-on-surface-variant mb-6 line-clamp-3">"Clarity isn't just about organizing, it's about seeing." - Brainstorming copy for the landing page launch in November.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+<span class="text-[11px] text-on-surface-variant">Work</span>
+</div>
+<span class="text-[11px] text-on-surface-variant/60 italic">Oct 09</span>
+</div>
+</div>
+<!-- Note Card 6 -->
+<div class="bento-card p-lg group cursor-pointer relative overflow-hidden">
+<div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center mb-4 text-red-600">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<h4 class="font-headline-sm text-[16px] mb-2 group-hover:text-primary transition-colors">Daily Affirmations</h4>
+<p class="text-body-md text-on-surface-variant mb-6 line-clamp-3">I am focused. I am productive. I am building a future where design and utility are perfectly balanced.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-red-400"></span>
+<span class="text-[11px] text-on-surface-variant">Journal</span>
+</div>
+<span class="text-[11px] text-on-surface-variant/60 italic">Oct 05</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-surface/80 backdrop-blur-md border-t border-outline-variant lg:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/20 rounded-xl px-3 py-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="font-label-md text-label-md">Thoughts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md text-label-md">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+</nav>
+<!-- Floating AI Prompt Bar (Signature Component) -->
+<div class="fixed bottom-24 lg:bottom-12 left-1/2 -translate-x-1/2 w-[90%] max-w-2xl z-40">
+<div class="relative group">
+<div class="absolute -inset-[1px] bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 group-hover:opacity-100 blur-[2px] transition duration-500"></div>
+<div class="relative bg-white rounded-full flex items-center px-6 py-4 shadow-xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-lg p-0" placeholder="Ask Clarity to find or refine a thought..." type="text"/>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for Editor Focus
+        const textarea = document.querySelector('textarea');
+        const editorCard = textarea?.closest('.bento-card');
+        
+        textarea?.addEventListener('focus', () => {
+            editorCard.style.borderColor = '#3B82F6';
+            editorCard.style.boxShadow = '0px 20px 25px -5px rgba(59, 130, 246, 0.05)';
+        });
+        
+        textarea?.addEventListener('blur', () => {
+            editorCard.style.borderColor = '#E5E7EB';
+            editorCard.style.boxShadow = '';
+        });
+
+        // Hover animations for bento cards
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (!card.classList.contains('border-dashed')) {
+                    card.style.transform = 'translateY(-4px)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>
