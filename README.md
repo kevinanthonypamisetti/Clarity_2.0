@@ -29,8 +29,8 @@ Clarity is a lightweight local-first workspace MVP for capturing thoughts, tasks
    ```
 
 4. Open the app
-   - Visit http://localhost:3000/
-   - Use /secret-admin to open the hidden developer console
+   - Visit https://clarity20-production.up.railway.app/
+
 
 ## Environment variables
 
